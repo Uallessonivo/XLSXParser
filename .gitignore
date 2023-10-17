@@ -1,0 +1,8 @@
+# File
+*.csv
+*.xlsx
+*.exe
+.env
+
+# Folders
+.vscode

@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/csv"
+	"fmt"
 	"os"
 	"strings"
 
@@ -48,7 +49,9 @@ func parseRows(rows [][]string) []Card {
 func main() {
 	file, err := excelize.OpenFile("cartoes.xlsx")
 	if err != nil {
-		panic(err)
+		fmt.Println("Nao localizamos ou nao foi possivel abrir o arquivo: 'cartoes.xlsx'")
+		fmt.Println("Pressione ENTER para sair")
+		fmt.Scanln()
 	}
 
 	defer file.Close()
@@ -78,4 +81,7 @@ func main() {
 		row := []string{card.Number, card.Cpf, " ", card.Holder}
 		writer.Write(row)
 	}
+
+	fmt.Println("Arquivo gerado com sucesso!")
+	fmt.Println("Pressione ENTER para sair")
 }
